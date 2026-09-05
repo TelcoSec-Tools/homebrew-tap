@@ -23,6 +23,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@1f8e202ffddf94def7f42f6fa3a482e821489f9c
+
       - name: Resolve Version & Fetch Archive SHA256
         id: fetch
         run: |
@@ -68,9 +72,6 @@ jobs:
 
           git diff Formula/telcosec.rb
 
-      - name: Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@1f8e202ffddf94def7f42f6fa3a482e821489f9c
 
       - name: Verify Tap Syntax
         run: brew test-bot --only-tap-syntax
