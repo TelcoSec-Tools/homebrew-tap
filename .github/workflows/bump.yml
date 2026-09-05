@@ -49,10 +49,12 @@ jobs:
           rm -f archive.tar.gz
 
           echo "[+] Verified SHA256: ${SHA256}"
-          echo "tag_name=${TAG_NAME}" >> "$GITHUB_OUTPUT"
-          echo "version=${CLEAN_VER}" >> "$GITHUB_OUTPUT"
-          echo "sha256=${SHA256}" >> "$GITHUB_OUTPUT"
-          echo "url=${ARCHIVE_URL}" >> "$GITHUB_OUTPUT"
+          {
+            echo "tag_name=${TAG_NAME}"
+            echo "version=${CLEAN_VER}"
+            echo "sha256=${SHA256}"
+            echo "url=${ARCHIVE_URL}"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Update Formula
         run: |
